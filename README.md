@@ -24,7 +24,7 @@ To run the project locally and preview the documentation:
 
 2. **Install MkDocs and dependencies**:
     ```bash
-    pip install mkdocs-material
+    pip install mkdocs
     ```
 
 3. **Run the MkDocs development server**:
