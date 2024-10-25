@@ -5,6 +5,9 @@ on:
     branches:
       - master   # Trigger workflow only on pushes to the main branch
 
+permissions: 
+  contents: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -26,8 +29,10 @@ jobs:
           pip install mkdocs-material
 
       # Build and deploy the site to GitHub Pages
-      - name: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages          
         run: |
           # sed -i -E "s/your-username/${{github.repository_owner}}/g" ./README.md
           # sed -i -E "s/my-mkdocs-project/${{github.repository}}/g" ./README.md
+          git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/ADORSYS-GIS/mk-docs.git
+      
           mkdocs gh-deploy --force
