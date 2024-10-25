@@ -20,6 +20,6 @@ markdown_extensions:
       permalink: true
 
 # Repository configuration (for the edit link on pages)
-repo_name: your-username/my-mkdocs-project
-repo_url: https://github.com/your-username/my-mkdocs-project
+repo_name: ADORSYS-GIS/mk-docs
+repo_url: https://github.com/ADORSYS-GIS/mk-docs
 edit_uri: edit/main/docs/
