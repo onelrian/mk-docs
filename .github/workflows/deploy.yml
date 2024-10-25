@@ -28,6 +28,6 @@ jobs:
       # Build and deploy the site to GitHub Pages
       - name: Deploy to GitHub Pages
         run: |
-          sed "s/your-username/${{github.repository_owner}}/g" ./README.md
-          sed "s/my-mkdocs-project/${{github.repository}}/g" ./README.md
+          sed -i -E "s/your-username/${{github.repository_owner}}/g" ./README.md
+          sed -i -E "s/my-mkdocs-project/${{github.repository}}/g" ./README.md
           mkdocs gh-deploy --force
