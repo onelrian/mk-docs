@@ -1,0 +1,25 @@
+# Project information
+site_name: My MkDocs Project
+site_description: 'An example MkDocs project using the Material theme'
+site_url: 'https://example.com'  # Change this to your site's URL
+
+# Theme settings
+theme:
+  name: material
+
+# Navbar settings (site structure)
+nav:
+  - Home: index.md
+  - About: about.md
+
+# Extra settings
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
+
+# Repository configuration (for the edit link on pages)
+repo_name: your-username/my-mkdocs-project
+repo_url: https://github.com/your-username/my-mkdocs-project
+edit_uri: edit/main/docs/
