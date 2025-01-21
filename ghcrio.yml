@@ -1,0 +1,52 @@
+name: Build and Slim Docker Image with GHCR
+
+on:
+  push:
+    branches:
+      - main  # Run the workflow only on pushes to the main branch
+
+jobs:
+  build-and-slim:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout the repository
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Step 2: Log in to GitHub Container Registry
+    - name: Log in to GitHub Container Registry
+      run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+    # Step 3: Build the Docker image
+    - name: Build Docker image
+      run: |
+        docker build -t ghcr.io/${{ github.repository_owner }}/mkdocs:latest .
+
+    # Step 4: Install Docker Slim
+    - name: Install Docker Slim
+      run: |
+        curl -sL https://github.com/slimtoolkit/slim/releases/latest/download/dist_linux.tar.gz | tar -xz -C /usr/local/bin
+        chmod +x /usr/local/bin/slim
+
+    # Step 5: Slim the Docker image
+    - name: Slim the Docker image
+      run: |
+        sudo docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock dslim/slim build --http-probe=false mkdocs
+        
+    # Step 6: Push the slimmed image to GHCR
+    - name: Push slimmed image to GHCR
+      run: |
+        docker push ghcr.io/${{ github.repository_owner }}/mkdocs.slim:latest
+
+    # Step 7: Save the slimmed image as a tar file
+    - name: Save slimmed image as tar
+      run: |
+        docker save ghcr.io/${{ github.repository_owner }}/mkdocs.slim:latest -o mkdocs.slim.tar
+
+    # Step 8: Upload the tar file as an artifact
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: mkdocs.slim-image
+        path: mkdocs-slim.tar
