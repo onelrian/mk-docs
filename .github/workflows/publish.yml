@@ -1,0 +1,29 @@
+on:
+    push:
+      branches:
+      - master
+
+  jobs: 
+    build:
+      runs-on: ubuntu-22.04
+      permissions:
+        packages: write
+
+      steps:
+        # Checkout the repository code
+        - name: Checkout code
+          uses: actions/checkout@v3
+
+        - name: Logn to Container Registry
+          uses: docker/login-action@v2
+          with:
+            registry: ghcr.io
+            username: ${{ github.actor }}
+            password: ${{ secrets.GITHUB_TOKEN }}
+
+        - name: Build Project
+          uses: docker/build-push-action@v4
+          with:
+            tag: | 
+              ghcr.io/${{ github.repository }}:latest
+              ghcr.io/${{ github.repository }}:${{ github.run_number }} 
