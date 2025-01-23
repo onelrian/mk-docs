@@ -5,14 +5,15 @@ site_url: 'https://onelrian.github.io/mk-docs'  # Change this to your site's URL
 
 # Theme settings
 theme:
-  name: material
+  name: bootstrap
 
 # Navbar settings (site structure)
 nav:
   - Home: index.md
   - About: about.md
   - multipass: multipass.md
-  
+  - short: short.md
+
 # Extra settings
 markdown_extensions:
   - admonition
