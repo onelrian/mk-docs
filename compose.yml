@@ -1,0 +1,15 @@
+services:
+  mkdocs:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: mydocs
+    ports:
+     - 8080:80
+    networks:
+     - mkdocs_network
+
+
+networks:
+  mkdocs_network:
+    driver: bridge
