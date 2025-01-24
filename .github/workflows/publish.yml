@@ -26,6 +26,7 @@ jobs:
         - name: Build Project
           uses: docker/build-push-action@v4
           with:
+             context: .
              push: true
              tag: | 
                 ghcr.io/${{ github.repository }}:latest
