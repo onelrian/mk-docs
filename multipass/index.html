@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://onelrian.github.io/mk-docs/multipass/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>multipass - My MkDocs Project</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">My MkDocs Project</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../about/" class="nav-link">About</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">multipass</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../short/" class="nav-link">short</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../about/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../short/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/onelrian/mk-docs/edit/master/docs/multipass.md" class="nav-link">Edit on onelrian/mk-docs
+                                    </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-light">
+        <ul class="nav flex-column">
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p><h1>MULTIPASS DOCUMENTATION
+Multipass is a flexible and powerful tool that can be used for many purposes.
+In its simplest form, you can use it to quickly create and destroy Ubuntu VMs (instances) on any host machine.
+ But you can also use Multipass to build a local mini-cloud on your laptop, to test and develop multi-instance
+ or container-based cloud applications.Here we're going to be seeing some basic commnads and how they would
+ help you manipulate your Virtual machine.</p>
+</blockquote>
+</blockquote>
+<p><h2>installing multipass<br />
+ You could start by installing the multipass using the commands;
+ <strong><code>snap install multipass</code></strong>
+ Subsequently if you no longer find interest in this tool you could simply ninstall it using the command ;
+ <strong><code>snap remove multipass</code></strong></p>
+<p><h2>What is an instance<br />
+ An instance in the context of virtual machines (VMs) refers to an individual, isolated virtual machine that is
+ created and run within a virtualization platform or cloud environment. It is essentially a "copy" or "deployment"
+  of a virtual machine template or image, running its own operating system and functioning as a separate, independent
+  computing environment.This instances could be created using the following commands
+  <strong><code>multipass launch</code></strong>
+  But to create an instance with a specific image use the command<code>multipass launch jammy</code> that is after running <strong><code>multipass find</code></strong>to check which images are available
+  An existing instance that is in Stopped or Suspended status can be started with the multipass start command;
+  - [x] <strong>TO start</strong> use <strong><code>multipass start loving-duck</code></strong> given that loving-duck is the existing instance
+  - [x] <strong>TO stop</strong>  use <strong><code>multipass stop loving-duck</code></strong> given that loving-duck is the existing instance
+  - [x] <strong>TO suspend</strong> use <strong><code>multipass suspend loving-duck</code></strong> given that loving-duck is the existing instance
+<h2>Deleting instances
+  To mark an instance as deleted, run:
+<strong><code>multipass delete keen-yak</code></strong>
+You can also use the --purge option to permanently delete an instance in a single command; for example:
+<strong><code>multipass delete --purge keen-yak</code></strong>  </p>
+<p><h2>How to use the Docker blueprint<br />
+The Docker blueprint gives Multipass users an easy way to create Ubuntu instances with Docker installed. It is based on the latest LTS release of Ubuntu, and includes docker engine and Portainer<br />
+To use the Docker blueprint, run <strong><code>multipass launch docker --name docker-vm</code></strong>, which will launch the docker-vm instance with default parameters.  </p>
+<p><h2>Using the Alias <br />
+The alias command in Unix-like operating systems (such as Linux and macOS) is used to create shortcuts for frequently used commands. It allows you to define a custom alias or shorthand for a longer or more complex command, making it quicker and easier to execute. You'll need to add this to your shell configuration (.bashrc, .zshrc or so) for aliases to work without working with extra long commands</p>
+</blockquote>
+</blockquote></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/jquery-3.6.0.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
